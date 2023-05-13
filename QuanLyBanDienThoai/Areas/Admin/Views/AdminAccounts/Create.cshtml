@@ -1,0 +1,50 @@
+﻿@model QuanLyBanDienThoai.Models.Account
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="card">
+    <div class="card-body">
+        <h4>Tạo mới tài khoản</h4>
+        <p>More complex layouts can also be created with the grid system.</p>
+        <div class="m-t-25" style="max-width: 700px">
+            <form asp-area="Admin" asp-controller="AdminAccounts" asp-action="Create" method="post">
+                
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>ID</label>
+                        <input asp-for="AccountId" type="text" class="form-control" placeholder="ID" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label >Họ Tên</label>
+                        <input asp-for="FullName" type="text" class="form-control" placeholder="Họ Tên"/>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Số điện thoại</label>
+                        <input asp-for="Phone" type="password" class="form-control" placeholder="Password"/>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">Email</label>
+                        <input asp-for="Email" type="text" class="form-control" id="inputCity">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputState">Quyền truy cập</label>
+                        <select class="form-control" asp-for="RoleId" asp-items="@ViewBag.QuyenTruyCap">
+                            <option value="0" disabled selected>Chọn quyền truy cập</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <input asp-for="Active" type="checkbox">
+                        <label for="Active">Active</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Đăng Ký</button>
+            </form>
+        </div>
+    </div>
+</div>

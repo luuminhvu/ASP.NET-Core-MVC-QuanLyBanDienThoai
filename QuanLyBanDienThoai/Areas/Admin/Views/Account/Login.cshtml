@@ -1,0 +1,50 @@
+﻿@model QuanLyBanDienThoai.Models.Account
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Enlink - Admin Dashboard Template</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/Adminassets/images/logo/favicon.png">
+
+    <!-- page css -->
+    <link href="~/Adminassets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
+
+    <!-- Core css -->
+    <link href="~/Adminassets/css/app.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="card">
+    <div class="card-body">
+        <h4>Đăng nhập hệ thống</h4>
+        <p>More complex layouts can also be created with the grid system.</p>
+        <div class="m-t-25" style="max-width: 700px">
+            <form asp-area="Admin" asp-controller="Account" asp-action="Login" method="post">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Email</label>
+                        <input asp-for="Email" type="password" class="form-control" placeholder="Email" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Số điện thoại</label>
+                        <input asp-for="Phone" type="password" class="form-control" placeholder="Phone" />
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Đăng Nhập</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

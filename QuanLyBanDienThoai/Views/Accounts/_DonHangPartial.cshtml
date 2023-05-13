@@ -1,0 +1,42 @@
+﻿@model List<Order>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@if(Model != null && Model.Count()>0)
+{
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <tbody>
+                <tr>
+                    <th>ID</th>
+                    <th>Ngày mua</th>
+                    <th>Ngày Ship</th>
+                    <td>Địa chỉ giao hàng</td>
+                    <th>Trạng thái</th>
+                    <th>Tổng tiền</th>
+                </tr>
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td><a class="account-order-id" href="javascript:void(0)">#@item.OrderId</a></td>
+                        <td>@item.OrderDate</td>
+                        <td>@item.ShipDate</td>
+                        <td>@item.Address
+                        <td>@item.TransactStatus.Status</td>
+                        <td>@item.TotalMoney.Value.ToString("#0,##0")</td>
+
+                        <td>
+                         @*   <a data-madonhang="@item.OrderId" class="xemdonhang btn btn-secondary btn-primary-hover"><span>View</span></a>*@
+                        </td>
+                    </tr>
+                }
+        </table>
+    </div>
+    <div id="record_table">
+    </div>
+
+}
+else
+{
+    <p>Chưa có đơn hàng</p>
+}

@@ -1,0 +1,84 @@
+﻿@model QuanLyBanDienThoai.ModelViews.RegisterVM;
+@{
+    ViewData["Title"] = "DangKyTaiKhoan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main class="main-content">
+
+    <div class="login-register-area section-space-y-axis-100">
+        <div class="container">
+            <div class="row">
+               @* <div class="col-lg-6">
+                    <form action="#">
+                        <div class="login-form">
+                            <h4 class="login-title">Login</h4>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label>Email Address*</label>
+                                    <input type="email" placeholder="Email Address">
+                                </div>
+                                <div class="col-lg-12">
+                                    <label>Password</label>
+                                    <input type="password" placeholder="Password">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="check-box">
+                                        <input type="checkbox" id="remember_me">
+                                        <label for="remember_me">Remember me</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 pt-1 mt-md-0">
+                                    <div class="forgotton-password_info">
+                                        <a href="#"> Forgotten pasward?</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 pt-5">
+                                    <button class="btn btn-custom-size lg-size btn-secondary btn-primary-hover rounded-0">Login</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>*@
+                <div class="col-lg-12 pt-10 pt-lg-0">
+                    <form asp-action="DangKyTaiKhoan">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="login-form">
+                            <h4 class="login-title">Đăng Ký Tài Khoản</h4>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Họ Tên</label>
+                                    <input type="text" asp-for="FullName" placeholder="Họ Tên">
+                                    <span asp-validation-for="FullName" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Email</label>
+                                    <input type="email" asp-for="Email" placeholder="Email">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Số điện thoại</label>
+                                    <input type="tel" asp-for="Phone" placeholder="Số điện thoại">
+                                    <span asp-validation-for="Phone" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Password</label>
+                                    <input type="password" asp-for="Password" placeholder="Password">
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Confirm Password</label>
+                                    <input type="password" asp-for="ConfirmPassword" placeholder="Confirm Password">
+                                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-custom-size lg-size btn-secondary btn-primary-hover rounded-0">Đăng ký</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

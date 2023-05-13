@@ -1,0 +1,127 @@
+﻿@model QuanLyBanDienThoai.Models.Post
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+            <a class="breadcrumb-item" asp-area="Admin" asp-controller="AdminPost" asp-action="Index">Danh Sách Post</a>
+
+            <span class="breadcrumb-item active">Xoá Post : @Model.Title </span>
+        </nav>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Xác nhận xoá Post: @Model.Title</h4>
+        <div class="table-responsive">
+            <table class="product-info-table m-t-20">
+                <tbody>
+                    <tr>
+                        <td>ID:</td>
+                        <td class="text-dark font-weight-semibold">@Model.PostId</td>
+                    </tr>
+                    <tr>
+                        <td>Tiêu đề:</td>
+                        <td>@Model.Title</td>
+                    </tr>
+
+                    <tr>
+                        <td>Nội dung</td>
+                        <td>@Model.Contents</td>
+                    </tr>
+
+                    <tr>
+                        <td>Author</td>
+                        <td>@Model.Author</td>
+                    </tr>
+
+                    <tr>
+                        <td>Public:</td>
+                        <td>
+                            @if (Model.Published == true)
+                            {
+                                <span class="badge badge-success">Active</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-danger">Deactive</span>
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>New Feed:</td>
+                        <td>
+                            @if (Model.IsNewFeed == true)
+                            {
+                                <span class="badge badge-success">Yes</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-danger">No</span>
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Hot:</td>
+                        <td>
+                            @if (Model.IsHot == true)
+                            {
+                                <span class="badge badge-success">Hot</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-danger">No Hot</span>
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Ngày tạo:</td>
+                        <td>@Model.CreateDate</td>
+                    </tr>
+
+                    <tr>
+                        <td>Mô tả ngắn:</td>
+                        <td>@Model.Scontents</td>
+                    </tr>
+                    <tr>
+                        <td>MetaDesc:</td>
+                        <td>@Model.MetaDesc</td>
+                    </tr>
+                    <tr>
+                        <td>MetaKey:</td>
+                        <td>@Model.MetaKey</td>
+                    </tr>
+                    <tr>
+                        <td>Alias:</td>
+                        <td>@Model.Alias</td>
+                    </tr>
+
+                    <tr>
+                        <td>Ảnh đại diện: @Model.Thumb</td>
+                        <td>
+                            <img width="200px" height="200px" src="~/images/posts/@Model.Thumb" alt="@Model.Title" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Xác nhận xoá</td>
+                        <td>
+                            <form asp-controller="AdminPosts" asp-action="Delete" asp-route-id="@Model.PostId" method="post">
+                                <input type="hidden" asp-for="PostId" />
+                                <input type="submit" value="Xoá" class="btn btn-danger" />
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div>
+    <a class="btn btn-primary m-r-5" asp-action="Edit" asp-route-id="@Model.PostId">Edit</a>
+    <a class="btn btn-primary m-r-5" asp-action="Index">Back to List</a>
+</div>

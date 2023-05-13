@@ -1,0 +1,91 @@
+﻿@model QuanLyBanDienThoai.Models.Order
+@{
+     ViewData["Title"] = "Thay đổi trạng thái";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="modal-header">
+    <h5 class="modal-title">Thông tin đơn hàng</h5>
+    <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="cart-title">Thông tin đơn hàng: @Model.OrderId</h4>
+            <div class="table-responsive">
+                <table class="product-info-table m-t-20">
+                    <tbody>
+                        <tr>
+                            <td>ID:</td>
+                            <td>@Model.OrderId</td>
+                        </tr>
+                        <tr>
+                            <td>Ngày đặt:</td>
+                            <td>@Model.OrderDate</td>
+                        </tr>
+                        <tr>
+                            <td>Ngày giao:</td>
+                            <td>@Model.ShipDate</td>
+                        </tr>
+                        <tr>
+                            <td>Khách hàng:</td>
+                            <td>@Model.Customer.FullName</td>
+                        </tr>
+                        <tr>
+                            <td>Thanh Toán</td>
+                            @if(Model.Paid == true)
+                            {
+                                <td>Chưa thanh toán</td>
+                            }
+                            else
+                            {
+                                <td>Đã thanh toán</td>
+                            }
+                        </tr>
+                        <tr>
+                            <td>Trạng thái:</td>
+                            <td>@Model.TransactStatus.Status</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <form asp-area="Admin" asp-controller="AdminOrders" asp-action="ChangeStatus" asp-route-id="@Model.OrderId" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="OrderId" />
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Trạng thái</label>
+                            <select class="form-control" asp-for="TransactStatusId" asp-items="ViewBag.TrangThai">
+                                <option value="0" disabled selected>Chọn trạng thái</option>
+                            </select>
+                        </div>
+                    </div>
+                
+                <div class="form-group col-md-6">
+                    <label>Đã thanh toán</label>
+                    <select class="form-control" asp-for="Paid">
+                        <option value="True">Chưa thanh toán</option>
+                       <option value="False">Đã thanh toán</option>
+                    </select>
+                    <span asp-validation-for="Paid" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Đơn Hàng bị Huỷ</label>
+                    <select class="form-control" asp-for="Deleted">
+                        <option value="True">Chưa huỷ</option>
+                        <option value="False">Đã huỷ</option>
+                    </select>
+                    <span asp-validation-for="Deleted" class="text-danger"></span>
+                </div>
+                <button type ="submit" class="btn btn-success">Lưu</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
